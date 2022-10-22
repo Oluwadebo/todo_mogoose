@@ -2,12 +2,24 @@
       <%- include('./partials/navbar.ejs') %>
       <% allusers.forEach((item,index) => { %>
         <div class="container my-3 mx-auto card shadow">
-          <h3 class="my-4 mx-auto"><span><%= item.firstname %></span> <span><%= item.lastname %></span> <span>is from <%= item.school %>.</span>
-            <form action="/deleteUser" method="post">
-              <input type="hidden" name="id" value="<%= item._id %>">
-              <button class="fa fa-trash mx-4 border-0"></button>
-            </form>
-          </h3></div>
+          <div class="row my-2">
+            <div class="col-8">              
+              <h3> <span class="mx-5"><%= index+1 %>.</span> <span class="mx-5"><%= item.todo %></span></h3>
+            </div>
+            <div class="col-1">
+              <form action="/deleteUser" method="post" class="mx-auto my-2">
+                <input type="hidden" name="id" value="<%= item._id %>">
+                <button class="fa fa-trash mx-4 border-0"></button>
+              </form>
+            </div>
+            <div class="col-1">
+              <form action="" method="post" class="mx-auto my-2">
+                <input type="hidden" name="id" value="<%= item._id %>">
+                <button class="fa fa-edit mx-4 border-0"></button>
+              </form>
+            </div>
+          </div>
+        </div>
       <% }) %>
   </body>
 </html>

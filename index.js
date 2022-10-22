@@ -7,12 +7,10 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }))
 const UserSchema = new mongoose.Schema(
     {
-        firstname: String,
-        lastname: String,
-        school: String,
+        todo: String,
     }
 )
-const UserModel = mongoose.model('User', UserSchema)
+const UserModel = mongoose.model('todos', UserSchema)
 mongoose.connect(process.env.URI, { useNewUrlParser: true, useUnifiedTopology: true, }).then((res) => {
     console.log("connected successfuly")
 }).catch(err => {
@@ -20,17 +18,13 @@ mongoose.connect(process.env.URI, { useNewUrlParser: true, useUnifiedTopology: t
 })
 app.set('view engine', 'ejs');
 app.get("/", (req, res) => {
-    const dele = (index) => {
-        const third = result.filter((item, ind) => index !== ind)
-        alert(third)
-    }
     UserModel.find((err, result) => {
         if (err) {
             console.log(err);
             console.log("error dey oo");
         } else {
             console.log(result);
-            res.render("home", { allusers: result, dele })
+            res.render("home", { allusers: result })
         }
     })
 })
@@ -47,12 +41,11 @@ app.post("/new-user", (req, res) => {
             console.log("Sent successfull and saved");
         }
     })
-    // console.log(user);
     res.redirect('/')
 })
 app.post('/deleteUser', (req, res) => {
     let id = (req.body.id);
-    console.log(id);
+    // console.log(id);
     UserModel.findByIdAndDelete({ _id: id }, (err, result) => {
         if (err) {
             console.log(err);
