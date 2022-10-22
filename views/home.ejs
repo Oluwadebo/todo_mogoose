@@ -1,21 +1,34 @@
 
       <%- include('./partials/navbar.ejs') %>
+      <center>
+        <h2 class="my-3">Todo Table</h2>
+      </center>
+      <div class="container my-1 mx-auto card shadow">
+        <div class="row my-2">
+          <div class="col-8">              
+            <h3> <span class="mx-5">S/N</span> <span class="mx-5">TODO</span> <span class="mx-5">TIME</span> <span class="mx-5">DATE</span></h3>
+          </div>
+          <div class="col-4">
+            <h3 class="mx-auto">Action</h3>
+          </div>
+        </div>
+      </div>
       <% allusers.forEach((item,index) => { %>
-        <div class="container my-3 mx-auto card shadow">
+        <div class="container my-1 mx-auto card shadow">
           <div class="row my-2">
             <div class="col-8">              
-              <h3> <span class="mx-5"><%= index+1 %>.</span> <span class="mx-5"><%= item.todo %></span></h3>
+              <h3> <span class="mx-5"><%= index+1 %>.</span> <span class="mx-5"><%= item.todo %></span> <span class="mx-5 mx-md-4"><%= item.time %></span> <span class="mx-5"><%= item.date %></span></h3>
+            </div>
+            <div class="col-1">
+              <form action="/editUser" method="post" class="mx-auto my-2">
+                <input type="hidden" name="id" value="<%= item._id %>">
+                <button class="fa fa-edit mx-4 border-0" style="color: darkblue;"></button>
+              </form>
             </div>
             <div class="col-1">
               <form action="/deleteUser" method="post" class="mx-auto my-2">
                 <input type="hidden" name="id" value="<%= item._id %>">
-                <button class="fa fa-trash mx-4 border-0"></button>
-              </form>
-            </div>
-            <div class="col-1">
-              <form action="" method="post" class="mx-auto my-2">
-                <input type="hidden" name="id" value="<%= item._id %>">
-                <button class="fa fa-edit mx-4 border-0"></button>
+                <button class="fa fa-trash mx-4 border-0" style="color: red;"></button>
               </form>
             </div>
           </div>

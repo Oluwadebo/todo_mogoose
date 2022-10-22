@@ -8,6 +8,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 const UserSchema = new mongoose.Schema(
     {
         todo: String,
+        time: String,
+        date: String,
     }
 )
 const UserModel = mongoose.model('todos', UserSchema)

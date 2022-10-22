@@ -1,8 +1,13 @@
     <%- include('./partials/navbar.ejs') %>
-    <div class="container mx-auto my-5">
+    <div class="container mx-auto my-3">
+        <center>
+            <h2 class="my-3">Provide your todo below.</h2>
+        </center>
         <div class="container mx-auto card shadow">
             <form action="/new-user" method="post" class="mx-2 my-4">
-                <input type="text" name="todo" class="form-control bg-transparent my-2" placeholder="Your Todo" id="todo">
+                <input type="text" name="todo" class="form-control bg-transparent my-2" placeholder="Todo Name" id="todo">
+                <input type="time" name="time" class="form-control bg-transparent my-2" id="time">
+                <input type="date" name="date" class="form-control bg-transparent my-2" id="date">
                 <button type="submit" class="btn btn-secondary px-4 my-2 form-control">Add-to-list</button>
             </form>
         </div>
