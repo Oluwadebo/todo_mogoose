@@ -1,0 +1,17 @@
+<%- include('./partials/navbar.ejs') %>
+<div class="container mx-auto my-3">
+    <center>
+        <h2 class="my-3">Edit your todo.</h2>
+    </center>
+    <div class="container mx-auto card shadow">
+        <form action="/update" method="post" class="mx-2 my-4">
+            <input type="hidden" name="id" value="<%= result[0]._id%>">
+            <input type="text" name="todo" value="<%= result[0].todo%>" class="form-control bg-transparent my-2" placeholder="Todo Name" id="todo">
+            <input type="time" name="time" value="<%= result[0].time%>" class="form-control bg-transparent my-2" id="time">
+            <input type="date" name="date" class="form-control bg-transparent my-2" value="<%= result[0].date%>" id="date">
+            <button type="submit" class="btn btn-secondary px-4 my-2 form-control">Update</button>
+          </form>
+    </div>
+</div>
+</body>
+</html>

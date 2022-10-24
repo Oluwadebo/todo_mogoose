@@ -57,6 +57,29 @@ app.post('/deleteUser', (req, res) => {
         }
     })
 })
+app.post('/editUser', (req, res) => {
+    let id = req.body.id;
+    UserModel.find({_id:id}, (err, result) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(result);
+            res.render('edit',{result})
+        }
+    })
+})
+app.post('/update',(req,res)=>{
+    let id = req.body.id;
+    let updated = req.body;
+    UserModel.findByIdAndUpdate(id,updated,(err,result)=>{
+        if (err) {
+            console.log(err);
+        } else {
+            console.log(result);
+            res.redirect('/')
+        }
+    })
+})
 app.listen(5003, () => {
     console.log("Server started");
 })
